@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: gdadc-api
+    cpus: 2
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    # restart: on-failure
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: gdadc-db
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "DataAnalytics.737!"
+    ports:
+      - "11433:1433"
