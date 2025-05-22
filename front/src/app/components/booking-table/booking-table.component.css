@@ -1,0 +1,6 @@
+::ng-deep .mat-header-cell,
+::ng-deep .mat-sort-header-container,
+::ng-deep .mat-sort-header-arrow {
+  color: #111 !important;
+  font-weight: bold;
+}

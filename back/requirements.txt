@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pycryptodome
+pydantic
+pandas
+sqlalchemy
+python-multipart
+alembic
+openpyxl
+
+

@@ -1,0 +1,41 @@
+<div class="booking-form-container">
+    <h2>Nova Reserva</h2>
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Primeiro Nome</mat-label>
+        <input matInput formControlName="first_name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Último Nome</mat-label>
+        <input matInput formControlName="last_name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Documento</mat-label>
+        <input matInput formControlName="document">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Data de Partida</mat-label>
+        <input matInput type="date" formControlName="departure_date">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Data de Chegada</mat-label>
+        <input matInput type="date" formControlName="arrival_date">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Origem (IATA)</mat-label>
+        <input matInput formControlName="departure_iata">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Destino (IATA)</mat-label>
+        <input matInput formControlName="arrival_iata">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="bookingForm.invalid">Cadastrar Reserva</button>
+    </form>
+  </div>

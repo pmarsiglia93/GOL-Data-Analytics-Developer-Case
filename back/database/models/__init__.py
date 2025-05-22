@@ -1,4 +1,3 @@
-from database.base import Base
+from .booking import BookingModel
 
-# Models
-from database.models.booking import BookingModel
+__all__ = ["BookingModel"]

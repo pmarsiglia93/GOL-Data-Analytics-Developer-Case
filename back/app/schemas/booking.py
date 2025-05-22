@@ -41,4 +41,4 @@ class BookingPost(BaseModel):
 
 
 class BookingFilePost(BaseModel):
-    rows: int
+    rows: List[BookingPost]

@@ -1,26 +1,13 @@
-# Stage 1
-FROM node:18 as node
+# Stage 1: build Angular app
+FROM node:18 AS build
 
-# Copy project
-COPY . /gdadc/
-
-# Set work directory
-WORKDIR /gdadc/
-
-# Build project
+WORKDIR /app
+COPY package*.json ./
 RUN npm install
-RUN npm run build
+COPY . .
+RUN npm run build -- --configuration production
 
-
-# Stage 2
-FROM nginx
-
-# Expose ports
-EXPOSE 80
-EXPOSE 443
-
-# Copy config file
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copy project
-COPY --from=node /gdadc/dist/gdadc/browser /usr/share/nginx/html
+# Stage 2: serve app with nginx
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist/gdadc/browser /usr/share/nginx/html
